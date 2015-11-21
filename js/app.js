@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var app = angular.module('photoApp', ["firebase", 'angular.filter', 'ngRoute']);
 
 //Setting Up routes
@@ -36,3 +37,4 @@ app.config(['$routeProvider', function($routeProvider){
     .otherwise({ redirectTo: 'main' });
 
 }]);
+
