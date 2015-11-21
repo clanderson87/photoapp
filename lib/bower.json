@@ -1,0 +1,30 @@
+{
+  "name": "lib",
+  "version": "0.0.0",
+  "homepage": "https://github.com/clanderson87/photoapp",
+  "authors": [
+    "Chris <cl.anderson8@gmail.com>"
+  ],
+  "description": "Nss Photo app 11/21/15-12/2/15",
+  "keywords": [
+    "NSS",
+    "Photo",
+    "App"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "~1.4.8",
+    "angularfire": "~1.1.3",
+    "angular-route": "~1.4.8",
+    "angular-filter": "~0.5.8",
+    "bootstrap": "~3.3.5"
+  }
+}
