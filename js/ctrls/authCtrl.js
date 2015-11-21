@@ -2,15 +2,13 @@
 app.controller("AuthCtrl", ["$firebaseAuth", "$location",
 	function($firebaseAuth, $location) {
 
-/*
-
     var ref = new Firebase("https://photo-app.firebaseio.com");
     this.authObj = $firebaseAuth(ref);
 
     this.logOut = function(){
     	// console.log('logged out');
 			this.authObj.$unauth();
-			$location.path( "/logIn");
+			$location.path( "/main");
     };
 
     this.logIn = function(){
@@ -21,7 +19,7 @@ app.controller("AuthCtrl", ["$firebaseAuth", "$location",
 			}).then(function(authData) {
 			  // console.log("Logged in as:", authData.uid);
 			  $location.path( "/main");
-			  songBase.setUser(authData);
+			  // songBase.setUser(authData);
 			}).catch(function(error) {
 			  console.error("Authentication failed:", error);
 			});
@@ -31,8 +29,8 @@ app.controller("AuthCtrl", ["$firebaseAuth", "$location",
     	// console.log('called Auth with ', authType);
 			this.authObj.$authWithOAuthPopup(authType).then(function(authData) {
 			  console.log("Logged in as:", authData.uid);
-			  $location.path( "/songs/list");
-			  songBase.setUser(authData);
+			  $location.path( "/main");
+			  // songBase.setUser(authData);
 			}).catch(function(error) {
 			  console.error("Authentication failed:", error);
 			});
@@ -44,21 +42,22 @@ app.controller("AuthCtrl", ["$firebaseAuth", "$location",
 			  password: this.newUser.password
 			}).then(function(userData) {
 			  // console.log("User " + userData.uid + " created successfully!");
-
+			  console.log(this.authObj);
+			  console.log(this.newUser);
 			  return this.authObj.$authWithPassword({
 			    email: this.newUser.email,
 			    password: this.newUser.password
 			  });
-			}).then(function(authData) {
-			  // console.log("Logged in as:", authData.uid);
-			  $location.path( "/main");
-			  songBase.setUser(authData);
+			}.bind(this)).then(function(authData) {
+			  console.log("Logged in as:", authData.uid);
+			  $location.path("/main");
+			  // songBase.setUser(authData);
 			}).catch(function(error) {
 			  console.error("Error: ", error);
 			});
 		}; //end register
 
-  */
+
   }//end controller function
 ]);
 
