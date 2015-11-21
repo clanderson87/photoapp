@@ -57,8 +57,8 @@ app.controller("AuthCtrl", ["$firebaseAuth", "$location",
 			  console.error("Error: ", error);
 			});
 		}; //end register
-  }//end controller function
 
   */
+  }//end controller function
 ]);
 

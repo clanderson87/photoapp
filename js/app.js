@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-var app = angular.module('photoApp', ["firebase", 'angular.filter', 'ngRoute']);
+var app = angular.module('PhotoApp', ["firebase", 'angular.filter', 'ngRoute']);
 
 //Setting Up routes
 app.config(['$routeProvider', function($routeProvider){
@@ -17,21 +16,21 @@ app.config(['$routeProvider', function($routeProvider){
 		})
 	//route for main view
 		.when('/main', {
-			templateUrl: 'mainView.html',
+			templateUrl: 'partials/mainView.html',
 			controller: 'MainViewCtrl as viewCtrl'
 		})
 	//route for userProfile
 		.when('/users/myProfile', {
-			templateUrl: 'myProfile.html',
+			templateUrl: 'partials/myProfile.html',
 			controller: 'MyProfileCtrl as profileCtrl'
 	})
 		//route for other user profile
 		.when('/users/:uid', {
-			templateUrl: 'userProfile.html',
+			templateUrl: 'partials/userProfile.html',
 			controller: 'UserProfileCtrl as profileCtrl'
 	})
     .when('/users', {
-      templateUrl: 'users.html',
+      templateUrl: 'partials/users.html',
       controller: 'UsersCtrl as usersCtrl'
     })
     .otherwise({ redirectTo: 'main' });
