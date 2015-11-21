@@ -1,5 +1,5 @@
 //factory for working with user's songs
-app.factory("songBase", ['$firebaseObject', '$firebaseArray', '$route', function($firebaseObject, $firebaseArray, $route) {
+app.factory("dataAccess", ['$firebaseObject', '$firebaseArray', '$route', function($firebaseObject, $firebaseArray, $route) {
 
 
 		//create a globally available 'songs' object

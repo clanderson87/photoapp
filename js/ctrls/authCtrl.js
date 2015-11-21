@@ -1,6 +1,6 @@
 //auth controller
-app.controller("AuthCtrl", ["$firebaseAuth", "$location",
-	function($firebaseAuth, $location) {
+app.controller("AuthCtrl", ["$firebaseAuth", "$location", "dataAccess"
+	function($firebaseAuth, $location, dataAccess) {
 
     var ref = new Firebase("https://photo-app.firebaseio.com");
     this.authObj = $firebaseAuth(ref);
@@ -19,7 +19,7 @@ app.controller("AuthCtrl", ["$firebaseAuth", "$location",
 			}).then(function(authData) {
 			  // console.log("Logged in as:", authData.uid);
 			  $location.path( "/main");
-			  // songBase.setUser(authData);
+			  dataAccess.setUser(authData);
 			}).catch(function(error) {
 			  console.error("Authentication failed:", error);
 			});
@@ -30,7 +30,7 @@ app.controller("AuthCtrl", ["$firebaseAuth", "$location",
 			this.authObj.$authWithOAuthPopup(authType).then(function(authData) {
 			  console.log("Logged in as:", authData.uid);
 			  $location.path( "/main");
-			  // songBase.setUser(authData);
+			  // dataAccess.setUser(authData);
 			}).catch(function(error) {
 			  console.error("Authentication failed:", error);
 			});
@@ -51,7 +51,7 @@ app.controller("AuthCtrl", ["$firebaseAuth", "$location",
 			}.bind(this)).then(function(authData) {
 			  console.log("Logged in as:", authData.uid);
 			  $location.path("/main");
-			  // songBase.setUser(authData);
+			  dataAccess.setUser(authData);
 			}).catch(function(error) {
 			  console.error("Error: ", error);
 			});
