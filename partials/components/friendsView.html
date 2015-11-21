@@ -1,0 +1,20 @@
+<div class="media">
+  <div class="media-left">
+    <div ng-repeat = "friend in friendsCtrl | filter: friendSearch">
+    <a href="{{friends.profileURL}}">
+      <img class="media-object" src="{{friends.img}}" alt="{{friends.name}}">
+    </a>
+  </div>
+</div>
+
+<!-- commented out until functionality arrives
+
+    div ng-repeat = "friend in friendsCtrl | filter: friendSearch">
+    <a href="{{friends.profileURL}}">
+      <img class="media-object" src="{{friends.img}}" alt="{{friends.name}}">
+    </a>
+
+-->
+
+
+
