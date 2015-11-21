@@ -1,0 +1,13 @@
+{
+  "Photos": {
+    "basicPic" :{
+    "username": "userName",
+    "uid": "1234",
+    "imgTitle": "Sparrow dancing in the Meadow",
+    "tags": ["dumb", "stupid", "whatevs"],
+    "album" : "Nature is Beautiful",
+    "imgUrl": "http://02b93fb.netsolhost.com/blog/wp-content/uploads/2010/10/Savannah-Sparrow-3.jpg",
+    "id": "00001"
+    }
+    }
+  }
