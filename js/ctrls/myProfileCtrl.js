@@ -19,7 +19,7 @@ app.controller("MyProfileCtrl", ["$routeParams", "$location", "dataAccess",
 		  	uid: currentUser.uid,
 		  	username: currentUser.username,
 				imgTitle: this.newPhotoTitle,
-				tags: this.newPhotoTags.toLowerCase.split(" "), //split tags at spaces and convert to lowercase
+				tags: this.newPhotoTags.toLowerCase().split(" "), //split tags at spaces and convert to lowercase
 				album: this.newPhotoAlbum,
 				imgUrl: this.newPhotoImgUrl
 			};
