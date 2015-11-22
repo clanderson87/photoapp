@@ -16,15 +16,34 @@ app.factory("dataAccess", ['$firebaseObject', '$firebaseArray', '$route', functi
   return {
 
   	setUser: function(userData) {
-  		currentUser = userData;
+
+  //current user set to the auth data
+  	 currentUser = userData;
       console.log("currentUser set as ", userData);
-      console.log(currentUser);
-    userRef = ref.child('users').child(userData.uid);
-    userRefObj = $firebaseObject(userRef);
-    currentUser.userName =  userRefObj.username;
+
+  ///read current user's chosen 'username' from firebase and add it to the currentUser object
+    var userRef = new Firebase("https://photo-app.firebaseio.com/users/" + currentUser.uid);
+    var userRefObj = $firebaseObject(userRef);
+
+    //promise that is resolved once the data is available from firebase
+    userRefObj.$loaded()
+      .then(function(){
+
+      console.log('userRefObj username', userRefObj.username);
+
+      if (userRefObj.username !== undefined) {
+        //set currentUser's username to their chosen alias
+        currentUser.username = userRefObj.username;
+      } else if (currentUser.facebook !== undefined) {
+        //or use first name from facebook log in
+        currentUser.username = currentUser.facebook.cachedUserProfile.first_name;
+      } else {currentUser.username = "Generic Username";}
+        console.log('current username = ', currentUser.username);
+
+     });
 
 
-  	},
+    },
 
     getUser: function(){
       return currentUser;

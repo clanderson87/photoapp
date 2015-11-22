@@ -42,7 +42,7 @@ app.controller("AuthCtrl", ["$firebaseAuth", "$location", "dataAccess", "$fireba
 			  password: this.newUser.password
 			}).then(function(userData) {
 			  // console.log("User " + userData.uid + " created successfully!");
-			  console.log(this.authObj);
+			  // console.log(this.authObj);
 			  console.log(this.newUser);
 
 			  userRef = ref.child('users').child(userData.uid);

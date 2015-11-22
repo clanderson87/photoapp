@@ -1,10 +1,11 @@
 app.controller("MyProfileCtrl", ["$routeParams", "$location", "dataAccess",
 	function($routeParams, $location, dataAccess) {
 
-		this.currentUser = dataAccess.getUser();
 
     this.addPhoto = function(){
+    	//get current user data from the log in screen
 
+		this.currentUser = dataAccess.getUser();
 	  	//check if fields are entered
 	  	if (this.newPhotoTitle.length > 0 &&
 	  			this.newPhotoTags.length > 0 &&
@@ -18,7 +19,7 @@ app.controller("MyProfileCtrl", ["$routeParams", "$location", "dataAccess",
 		  	uid: currentUser.uid,
 		  	username: currentUser.username,
 				imgTitle: this.newPhotoTitle,
-				tags: this.newPhotoTags.split(" "),
+				tags: this.newPhotoTags.toLowerCase.split(" "), //split tags at spaces and convert to lowercase
 				album: this.newPhotoAlbum,
 				imgUrl: this.newPhotoImgUrl
 			};
@@ -31,6 +32,6 @@ app.controller("MyProfileCtrl", ["$routeParams", "$location", "dataAccess",
 
 			} //end if
 
-		} //end add new Song
+		}; //end add new Song
 
 }]);
