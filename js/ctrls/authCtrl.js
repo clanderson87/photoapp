@@ -1,6 +1,6 @@
 //auth controller
-app.controller("AuthCtrl", ["$firebaseAuth", "$location", "dataAccess"
-	function($firebaseAuth, $location, dataAccess) {
+app.controller("AuthCtrl", ["$firebaseAuth", "$location", "dataAccess", "$firebaseObject",
+	function($firebaseAuth, $location, dataAccess, $firebaseObject) {
 
     var ref = new Firebase("https://photo-app.firebaseio.com");
     this.authObj = $firebaseAuth(ref);
@@ -30,7 +30,7 @@ app.controller("AuthCtrl", ["$firebaseAuth", "$location", "dataAccess"
 			this.authObj.$authWithOAuthPopup(authType).then(function(authData) {
 			  console.log("Logged in as:", authData.uid);
 			  $location.path( "/main");
-			  // dataAccess.setUser(authData);
+			  dataAccess.setUser(authData);
 			}).catch(function(error) {
 			  console.error("Authentication failed:", error);
 			});
@@ -42,8 +42,15 @@ app.controller("AuthCtrl", ["$firebaseAuth", "$location", "dataAccess"
 			  password: this.newUser.password
 			}).then(function(userData) {
 			  // console.log("User " + userData.uid + " created successfully!");
-			  console.log(this.authObj);
+			  // console.log(this.authObj);
 			  console.log(this.newUser);
+
+			  userRef = ref.child('users').child(userData.uid);
+			  userRefObj = $firebaseObject(userRef);
+			  userRefObj.username = this.newUser.username;
+			  userRefObj.$save();
+
+
 			  return this.authObj.$authWithPassword({
 			    email: this.newUser.email,
 			    password: this.newUser.password

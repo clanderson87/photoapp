@@ -1,0 +1,36 @@
+<div class="row" id="addNewPhoto">
+	<div class="addNew col-sm-12">
+		<form action="GET">
+
+			<h3>Add New Photo to your Library</h3>
+
+			<!-- //url -->
+			<label for="photo_url">Photo ULR</label>
+  		<input id="photo_url" type="text" name="photo_url" placeholder="Photo URL" ng-model="profileCtrl.newPhotoImgUrl"/>
+
+
+			<!-- //artist -->
+			<label for="photo_title">Title</label>
+  		<input type="text" name="photo_title" placeholder="Title" ng-model="profileCtrl.newPhotoTitle"/>
+
+
+			<!-- //album -->
+			<label for="photo_album">Album</label>
+  		<input type="text" name="photo_album" placeholder="Album" ng-model="profileCtrl.newPhotoAlbum"/>
+
+			<!-- //genre -->
+			<label for="genre">Tags (separate with spaces)</label>
+  		<input id="genre" type="text" name="genre" placeholder="Tags" ng-model="profileCtrl.newPhotoTags" />
+
+			<div class="photo" value="{{profileCtrl.newPhotoTitle}}">
+				<img src="{{profileCtrl.newPhotoImgUrl}}" alt="new Photo">
+				<p>Title: {{profileCtrl.newPhotoTitle}}</p>
+			 	<p>Album: {{profileCtrl.newPhotoAlbum}}</p>
+			</div>
+
+			<button type='button' id='add-photo' ng-click="profileCtrl.addPhoto()">Add photo</button>
+
+		</form>
+	</div>
+</div>
+
