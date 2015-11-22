@@ -5,7 +5,8 @@ app.factory("dataAccess", ['$firebaseObject', '$firebaseArray', '$route', functi
 		//create a globally available 'songs' object
 	var photosObject = {};
 	var photosArray = [];
-	var currentUser;
+	var currentUser = null;
+  var currentUserId = null;
 
   ref = new Firebase("https://photo-app.firebaseio.com/photos/");
         // download the data into a local object
@@ -16,6 +17,12 @@ app.factory("dataAccess", ['$firebaseObject', '$firebaseArray', '$route', functi
 
   	setUser: function(userData) {
   		currentUser = userData;
+      console.log("currentUser set as ", userData);
+      console.log(currentUser);
+    userRef = ref.child('users').child(userData.uid);
+    userRefObj = $firebaseObject(userRef);
+    currentUser.userName =  userRefObj.username;
+
 
   	},
 
@@ -48,6 +55,7 @@ app.factory("dataAccess", ['$firebaseObject', '$firebaseArray', '$route', functi
 					photosArray.$save(index);
 				}); //end then
    	}, //end add photo
+
 		removePhoto: function(photoKey) {
 					var index = photosArray.$indexFor(photoKey);
 					photosArray.$remove(index);

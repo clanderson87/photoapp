@@ -9,6 +9,10 @@
 			<p ng-hide="authCtrl.newUser.email">Please input a valid email address.</p>
 			<p ng-show="authCtrl.newUser.email">Ok.</p>
 
+			<input required type="text" ng-model="authCtrl.newUser.username" placeholder="Username"/>
+			<p ng-hide="authCtrl.newUser.username">Please choose a username.</p>
+			<p ng-show="authCtrl.newUser.username">Ok.</p>
+
 			<input required type="password" ng-model="authCtrl.newUser.password" placeholder="Password"/>
 			<input required type="password" ng-model="authCtrl.newUser.password2" placeholder="Confirm Password"/>
 			<p ng-hide="authCtrl.newUser.password && authCtrl.newUser.password == authCtrl.newUser.password2">Please Input Matching passwords</p>
