@@ -1,0 +1,4 @@
+/*css to hide edit buttons on load*/
+.editProfile {
+	display: none;
+}
