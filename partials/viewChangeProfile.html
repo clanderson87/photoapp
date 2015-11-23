@@ -11,8 +11,4 @@
 
 <button class="editProfile" ng-click="profileCtrl.editProfile()">Save Changes</button>
 
-<h3>My pics</h3>
-<div ng-repeat="photo in profileCtrl.allPhotos  | filter: {uid: profileCtrl.currentUser.uid} " >
-	<img src="{{photo.imgUrl}}" alt="{{photo.imgTitle}}"><p>{{photo.imgTitle}}</p>
 
-</div>

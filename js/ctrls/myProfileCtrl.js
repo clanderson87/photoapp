@@ -47,4 +47,18 @@ app.controller("MyProfileCtrl", ["$routeParams", "$location", "dataAccess", "$fi
 
 		};
 
+		this.toggleEditPhoto = function(){
+			$('.editPhoto').toggle('display');
+		};
+
+		this.editPhoto = function(photo){
+			dataAccess.editPhoto(photo);
+			$('.editPhoto').toggle('display');
+		};
+
+		this.removePhoto = function(photoid){
+			dataAccess.removePhoto(photoid);
+			$('.editPhoto').toggle('display');
+		};
+
 }]);
