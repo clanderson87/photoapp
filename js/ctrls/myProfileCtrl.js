@@ -1,12 +1,15 @@
-app.controller("MyProfileCtrl", ["$routeParams", "$location", "dataAccess",
-	function($routeParams, $location, dataAccess) {
+app.controller("MyProfileCtrl", ["$routeParams", "$location", "dataAccess", "$firebaseObject",
+	function($routeParams, $location, dataAccess, $firebaseObject) {
 
+		this.allPhotos = dataAccess.getPhotosAsArray();
+
+
+		this.currentUser = dataAccess.getUser();
 
     this.addPhoto = function(){
     	//get current user data from the log in screen
 
-		this.currentUser = dataAccess.getUser();
-	  	//check if fields are entered
+			  	//check if fields are entered
 	  	if (this.newPhotoTitle.length > 0 &&
 	  			this.newPhotoTags.length > 0 &&
 	  			this.newPhotoAlbum.length > 0 &&
@@ -32,6 +35,16 @@ app.controller("MyProfileCtrl", ["$routeParams", "$location", "dataAccess",
 
 			} //end if
 
-		}; //end add new Song
+		}; //end add new Photo
+
+		this.toggleEdits = function(){
+			$('.editProfile').toggle('display');
+		};
+
+		this.editProfile = function(){
+			dataAccess.updateProfile(this.currentUser);
+			$('.editProfile').toggle('display');
+
+		};
 
 }]);

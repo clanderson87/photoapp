@@ -18,7 +18,6 @@ app.controller("AuthCtrl", ["$firebaseAuth", "$location", "dataAccess", "$fireba
 			  password: this.password
 			}).then(function(authData) {
 			  // console.log("Logged in as:", authData.uid);
-			  $location.path( "/main");
 			  dataAccess.setUser(authData);
 			}).catch(function(error) {
 			  console.error("Authentication failed:", error);
@@ -29,7 +28,6 @@ app.controller("AuthCtrl", ["$firebaseAuth", "$location", "dataAccess", "$fireba
     	// console.log('called Auth with ', authType);
 			this.authObj.$authWithOAuthPopup(authType).then(function(authData) {
 			  console.log("Logged in as:", authData.uid);
-			  $location.path( "/main");
 			  dataAccess.setUser(authData);
 			}).catch(function(error) {
 			  console.error("Authentication failed:", error);
@@ -48,6 +46,7 @@ app.controller("AuthCtrl", ["$firebaseAuth", "$location", "dataAccess", "$fireba
 			  userRef = ref.child('users').child(userData.uid);
 			  userRefObj = $firebaseObject(userRef);
 			  userRefObj.username = this.newUser.username;
+			  userRefObj.userPhoto = "./styles/pics/genericUserIcon.png";
 			  userRefObj.$save();
 
 
@@ -57,7 +56,6 @@ app.controller("AuthCtrl", ["$firebaseAuth", "$location", "dataAccess", "$fireba
 			  });
 			}.bind(this)).then(function(authData) {
 			  console.log("Logged in as:", authData.uid);
-			  $location.path("/main");
 			  dataAccess.setUser(authData);
 			}).catch(function(error) {
 			  console.error("Error: ", error);

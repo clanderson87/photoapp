@@ -1,5 +1,5 @@
 //factory for working with user's songs
-app.factory("dataAccess", ['$firebaseObject', '$firebaseArray', '$route', function($firebaseObject, $firebaseArray, $route) {
+app.factory("dataAccess", ['$firebaseObject', '$firebaseArray', '$route', '$location', function($firebaseObject, $firebaseArray, $route, $location) {
 
 
 		//create a globally available 'songs' object
@@ -17,33 +17,50 @@ app.factory("dataAccess", ['$firebaseObject', '$firebaseArray', '$route', functi
 
   	setUser: function(userData) {
 
-  //current user set to the auth data
-  	 currentUser = userData;
-      console.log("currentUser set as ", userData);
 
-  ///read current user's chosen 'username' from firebase and add it to the currentUser object
-    var userRef = new Firebase("https://photo-app.firebaseio.com/users/" + currentUser.uid);
+  ///read current user's data from firebase and add it to the currentUser object
+    var userRef = new Firebase("https://photo-app.firebaseio.com/users/" + userData.uid);
     var userRefObj = $firebaseObject(userRef);
 
     //promise that is resolved once the data is available from firebase
     userRefObj.$loaded()
       .then(function(){
 
+      currentUser = userRefObj;
+
       console.log('userRefObj username', userRefObj.username);
+      console.log(userData.facebook);
+
 
       if (userRefObj.username !== undefined) {
         //set currentUser's username to their chosen alias
         currentUser.username = userRefObj.username;
-      } else if (currentUser.facebook !== undefined) {
+      } else if (userData.facebook !== undefined) {
         //or use first name from facebook log in
-        currentUser.username = currentUser.facebook.cachedUserProfile.first_name;
+        currentUser.username = userData.facebook.cachedUserProfile.first_name;
       } else {currentUser.username = "Generic Username";}
         console.log('current username = ', currentUser.username);
 
-     });
 
+      if (userRefObj.userPhoto !== undefined) {
+        //set currentUser's username to their chosen alias
+        currentUser.userPhoto = userRefObj.userPhoto;
+      } else if (userData.facebook !== undefined) {
+        //or use first name from facebook log in
+        currentUser.userPhoto = userData.facebook.profileImageURL;
+      } else {currentUser.userPhoto = "./styles/pics/genericUserIcon.png";}
+        console.log('current userPhoto = ', currentUser.userPhoto);
 
-    },
+      console.log("currentUser set as ", currentUser);
+     currentUser.uid = userData.uid;
+
+    $location.path("/users/myProfile");
+
+     }); //end promise
+
+  //current user set to the auth data
+
+    },// end set user
 
     getUser: function(){
       return currentUser;
@@ -85,6 +102,13 @@ app.factory("dataAccess", ['$firebaseObject', '$firebaseArray', '$route', functi
       photosArray.$save(index);
 
     }, //end edit photo
+
+    updateProfile: function(userData){
+      currentUser.about = userData.about;
+      currentUser.userPhoto = userData.userPhoto;
+      currentUser.$save();
+
+    }
 
   }; //end return
 
