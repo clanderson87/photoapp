@@ -1,1 +1,27 @@
-<h1>Register Partial</h1>
+<div class="row" id="registerForm">
+	<div class="registerForm col-sm-12">
+		<form name="registerForm">
+
+			<h3>Welcome to GPA (generic photo app)</h3>
+			<p>Log in to manage your photo albums, friendships, and more.</p>
+
+			<input required type="email" ng-model="authCtrl.newUser.email" placeholder="Email"/>
+			<p ng-hide="authCtrl.newUser.email">Please input a valid email address.</p>
+			<p ng-show="authCtrl.newUser.email">Ok.</p>
+
+			<input required type="text" ng-model="authCtrl.newUser.username" placeholder="Username"/>
+			<p ng-hide="authCtrl.newUser.username">Please choose a username.</p>
+			<p ng-show="authCtrl.newUser.username">Ok.</p>
+
+			<input required type="password" ng-model="authCtrl.newUser.password" placeholder="Password"/>
+			<input required type="password" ng-model="authCtrl.newUser.password2" placeholder="Confirm Password"/>
+			<p ng-hide="authCtrl.newUser.password && authCtrl.newUser.password == authCtrl.newUser.password2">Please Input Matching passwords</p>
+			<p ng-show="authCtrl.newUser.password && authCtrl.newUser.password == authCtrl.newUser.password2">Ok.</p>
+
+			<button type='button' ng-click="authCtrl.register()" ng-show="authCtrl.newUser.email && authCtrl.newUser.password && authCtrl.newUser.password == authCtrl.newUser.password2">Sign Up</button>
+
+
+		</form>
+		<h3>Already have an account? <a href="#/login">Log In</a> to view your library.</h3>
+	</div>
+</div>

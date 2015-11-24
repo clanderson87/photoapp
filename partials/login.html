@@ -1,1 +1,18 @@
-<h1>Log In partial</h1>
+<div class="row" id="logIn">
+	<div class="logIn col-sm-12">
+		<form name="logInForm">
+
+			<h3>Welcome to GPA (generic photo app)</h3>
+			<p>Log in to manage your photo albums, friendships, and more.</p>
+
+			<input required type="email" ng-model="authCtrl.email" placeholder="Email"/>
+			<input required type="password" ng-model="authCtrl.password" placeholder="Password"/>
+			<button type='button' ng-click="authCtrl.logIn()" ng-show="authCtrl.email && authCtrl.password">LogIn</button>
+
+		<h4>You can also log in using Facebook</h4>
+		<img class='iconImg' src="styles/pics/facebookIcon.png" ng-click="authCtrl.authWith('facebook')" alt="Auth With Facebook"/>
+		</form>
+
+			<h3>Don't have an account? <a href="#/register">Register</a> to get started.</h3>
+	</div>
+</div>
