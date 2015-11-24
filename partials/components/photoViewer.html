@@ -1,22 +1,8 @@
 <div class="row">
-  <div class="col-xs-6 col-md-3 offset">
-    <a href="#" class="thumbnail">
-      <img src="http://www.planwallpaper.com/static/images/Winter-Tiger-Wild-Cat-Images.jpg" alt="...">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://www.planwallpaper.com/static/images/Winter-Tiger-Wild-Cat-Images.jpg" alt="...">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://www.planwallpaper.com/static/images/Winter-Tiger-Wild-Cat-Images.jpg" alt="...">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://www.planwallpaper.com/static/images/Winter-Tiger-Wild-Cat-Images.jpg" alt="...">
+  <div class="col-xs-6 col-md-3 offset" ng-repeat="pic in viewCtrl.pics | filter: viewCtrl.query">
+    <a href="{{pic.imgUrl}}" class="thumbnail">
+      <img src="{{pic.imgUrl}}" alt="{{pic.imgTitle}}">
+      <span class = "album-name">{{pic.album}}</span><a href="#/users/{{pic.uid}}">{{pic.username}}</a>
     </a>
   </div>
 </div>

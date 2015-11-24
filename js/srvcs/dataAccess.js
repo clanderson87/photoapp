@@ -111,6 +111,12 @@ app.factory("dataAccess", ['$firebaseObject', '$firebaseArray', '$route', '$loca
 
     }
 
+    // getFriends: function(userData){
+    //   currentUser.friends.push(userData.friends);
+    //   currentUser.$save();
+    //   console.log(currentUser.friends)
+    // }
+
   }; //end return
 
 }]);

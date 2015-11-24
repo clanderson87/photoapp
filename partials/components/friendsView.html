@@ -1,10 +1,6 @@
-<div class="media col-md-3">
-  <div class="media-left">
-    <a href="#">
-      <img class="media-object" src="..." alt="Friend's name">
-    </a>
-    <a href="#">
-      <img class="media-object" src="..." alt="Friend's name">
+<div ng-show="uid" class="media col-md-3">
+  <div class="media-left" ng-repeat="friend in viewCtrl.friends">
+    <a href="#/users/{{friend.uid}}">{{friend.username}}
     </a>
   </div>
 </div>
