@@ -96,6 +96,7 @@ app.factory("dataAccess", ['$firebaseObject', '$firebaseArray', '$route', '$loca
 					var index = photosArray.$indexFor(photoKey);
 					photosArray.$remove(index);
    	}, //end remove photo
+
     editPhoto: function(editedPhotoData) {
       var index = photosArray.$indexFor(editedPhotoData.id);
       photosArray[index] = editedPhotoData;

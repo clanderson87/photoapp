@@ -1,0 +1,26 @@
+<h3>My pics</h3>
+<div ng-repeat="photo in profileCtrl.allPhotos  | filter: {uid: profileCtrl.currentUser.uid} " >
+	<img src="{{photo.imgUrl}}" alt="{{photo.imgTitle}}">
+
+	<p>{{photo.imgTitle}}</p>
+	<input class="editPhoto" type="text" ng-model="photo.imgTitle">
+
+	<p>Album: {{photo.album}}</p>
+	<input class="editPhoto" type="text" ng-model="photo.album">
+
+	<p>By {{photo.username}}</p>
+
+	<p>Tags:
+	<span ng-repeat="tag in photo.tags" index="{{$index}}">{{tag}} <span ng-click="photo.tags.splice($index, 1)" class="glyphicon glyphicon-minus"></span> </span>
+	</p>
+	<input class="editPhoto" type="text" ng-model="photo.newTag"><button ng-click="photo.tags.push(photo.newTag)" class="editPhoto">Add Tag</button>
+
+	<button ng-click="profileCtrl.toggleEditPhoto()">Edit</button>
+
+	<button class="editPhoto" ng-click="profileCtrl.editPhoto(photo)">Save Changes</button>
+
+	<button class="editPhoto" ng-click="profileCtrl.removePhoto(photo.id)">Remove</button>
+
+</div>
+
+
