@@ -1,1 +1,32 @@
 <h1>Partial for other users</h1>
+
+<h2>Hi {{profileCtrl.currentUser.username}}</h2>
+
+<p>This is {{profileCtrl.displayUser.username}}'s Profile'</p>
+
+<img src="{{profileCtrl.displayUser.userPhoto}}" alt="userPhoto">
+
+<h3>About</h3>
+<p>{{profileCtrl.displayUser.about}}</p>
+
+<h3>Photo Library</h3>
+<div ng-repeat="photo in profileCtrl.allPhotos  | filter: {uid: profileCtrl.displayUser.uid} " >
+	<img src="{{photo.imgUrl}}" alt="{{photo.imgTitle}}">
+
+	<p>{{photo.imgTitle}}</p>
+	<input class="editPhoto" type="text" ng-model="photo.imgTitle">
+
+	<p>Album: {{photo.album}}</p>
+	<input class="editPhoto" type="text" ng-model="photo.album">
+
+	<p>By {{photo.username}}</p>
+
+	<p>Tags:
+	<span ng-repeat="tag in photo.tags">{{tag}} </span>
+	</p>
+
+
+</div>
+
+
+
