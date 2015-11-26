@@ -62,6 +62,10 @@ app.factory("dataAccess", ['$firebaseObject', '$firebaseArray', '$route', '$loca
 
     },// end set user
 
+    resetUser: function() {
+      currentUser = null;
+    },
+
     getUser: function(){
       return currentUser;
     },

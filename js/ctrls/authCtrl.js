@@ -2,13 +2,19 @@
 app.controller("AuthCtrl", ["$firebaseAuth", "$location", "dataAccess", "$firebaseObject",
 	function($firebaseAuth, $location, dataAccess, $firebaseObject) {
 
+
     var ref = new Firebase("https://photo-app.firebaseio.com");
     this.authObj = $firebaseAuth(ref);
 
     this.logOut = function(){
     	// console.log('logged out');
 			this.authObj.$unauth();
+			dataAccess.resetUser();
 			$location.path( "/main");
+			$('.navBarNoAuth').toggle('display');
+			$('.navBarAuth').toggle('display');
+
+			this.isLoggedIn = false;
     };
 
     this.logIn = function(){
@@ -19,7 +25,10 @@ app.controller("AuthCtrl", ["$firebaseAuth", "$location", "dataAccess", "$fireba
 			}).then(function(authData) {
 			  // console.log("Logged in as:", authData.uid);
 			  dataAccess.setUser(authData);
-			}).catch(function(error) {
+			  $('.navBarNoAuth').toggle('display');
+			  $('.navBarAuth').toggle('display');
+
+			}.bind(this)).catch(function(error) {
 			  console.error("Authentication failed:", error);
 			});
     };
@@ -29,7 +38,10 @@ app.controller("AuthCtrl", ["$firebaseAuth", "$location", "dataAccess", "$fireba
 			this.authObj.$authWithOAuthPopup(authType).then(function(authData) {
 			  console.log("Logged in as:", authData.uid);
 			  dataAccess.setUser(authData);
-			}).catch(function(error) {
+			 	$('.navBarNoAuth').toggle('display');
+			  $('.navBarAuth').toggle('display');
+
+			}.bind(this)).catch(function(error) {
 			  console.error("Authentication failed:", error);
 			});
 		};
@@ -57,7 +69,10 @@ app.controller("AuthCtrl", ["$firebaseAuth", "$location", "dataAccess", "$fireba
 			}.bind(this)).then(function(authData) {
 			  console.log("Logged in as:", authData.uid);
 			  dataAccess.setUser(authData);
-			}).catch(function(error) {
+			  $('.navBarNoAuth').toggle('display');
+			  $('.navBarAuth').toggle('display');
+
+			}.bind(this)).catch(function(error) {
 			  console.error("Error: ", error);
 			});
 		}; //end register
