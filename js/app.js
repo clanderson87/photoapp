@@ -24,15 +24,15 @@ app.config(['$routeProvider', function($routeProvider){
 			templateUrl: 'partials/myProfile.html',
 			controller: 'MyProfileCtrl as profileCtrl'
 	})
+    .when('/users', {
+      templateUrl: 'partials/users.html',
+      controller: 'UsersCtrl as usersCtrl'
+    })
 		//route for other user profile
 		.when('/users/:uid', {
 			templateUrl: 'partials/userProfile.html',
 			controller: 'UserProfileCtrl as profileCtrl'
 	})
-    .when('/users', {
-      templateUrl: 'partials/users.html',
-      controller: 'UsersCtrl as usersCtrl'
-    })
     .otherwise({ redirectTo: 'main' });
 
 }]);
