@@ -1,5 +1,5 @@
-<div class="row" id="addNewPhoto">
-	<div class="addNew col-sm-12">
+<div class="row modal-header" id="addNewPhoto">
+	<div class="addNew col-sm-12 modal-body">
 		<form action="GET">
 
 			<h3>Add New Photo to your Library</h3>
@@ -29,6 +29,7 @@
 			</div>
 
 			<button type='button' id='add-photo' ng-click="profileCtrl.addPhoto()">Add photo</button>
+			<button type='button' ng-click="profileCtrl.closeModal()">Close</button>
 
 		</form>
 	</div>

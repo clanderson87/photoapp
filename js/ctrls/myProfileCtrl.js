@@ -1,10 +1,14 @@
-app.controller("MyProfileCtrl", ["$routeParams", "$location", "dataAccess", "$firebaseObject",
-	function($routeParams, $location, dataAccess, $firebaseObject) {
+app.controller("MyProfileCtrl", ["$routeParams", "$location", "dataAccess", "$firebaseObject", "$uibModal",
+	function($routeParams, $location, dataAccess, $firebaseObject, $uibModal) {
 
 		this.allPhotos = dataAccess.getPhotosAsArray();
 
 
+
+
 		this.currentUser = dataAccess.getUser();
+
+
 
     this.addPhoto = function(){
     	//get current user data from the log in screen
@@ -60,5 +64,24 @@ app.controller("MyProfileCtrl", ["$routeParams", "$location", "dataAccess", "$fi
 			dataAccess.removePhoto(photoid);
 			$('.editPhoto').toggle('display');
 		};
+
+		this.open = function () {
+
+	    var modalInstance = $uibModal.open({
+	      animation: true,
+	      templateUrl: './partials/addPhoto.html',
+	      controller: 'AddPhotoCtrl as profileCtrl',
+	      size: 'lg',
+
+	    });
+
+  	};
+
+  	this.closeModal = function () {
+
+			 $uibModalInstance.close()
+
+  	};
+
 
 }]);

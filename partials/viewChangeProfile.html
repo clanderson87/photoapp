@@ -1,6 +1,6 @@
 <h2>Hi {{profileCtrl.currentUser.username}}</h2>
 
-<p>This is your Profile <span ng-click="profileCtrl.toggleEdits()">Edit</span></p>
+<p>This is your Profile <button ng-click="profileCtrl.toggleEdits()">Edit</button></p>
 
 <img src="{{profileCtrl.currentUser.userPhoto}}" alt="userPhoto">
 <input class="editProfile" type="text" ng-model="profileCtrl.currentUser.userPhoto" placeholder="Image Url">
@@ -10,5 +10,7 @@
 <input class="editProfile" type="text" ng-model="profileCtrl.currentUser.about">
 
 <button class="editProfile" ng-click="profileCtrl.editProfile()">Save Changes</button>
+
+
 
 
