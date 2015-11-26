@@ -127,7 +127,9 @@ app.factory("dataAccess", ['$firebaseObject', '$firebaseArray', '$route', '$loca
       currentUser.userPhoto = userData.userPhoto;
       currentUser.$save();
 
-    }
+    },
+
+
 
 
   }; //end return
