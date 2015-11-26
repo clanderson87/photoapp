@@ -1,0 +1,18 @@
+<div ng-show="uid" class="media col-md-3">
+  <div class="media-left" ng-repeat="friend in viewCtrl.friends">
+    <a href="#/users/{{friend.uid}}">{{friend.username}}
+    </a>
+  </div>
+</div>
+
+<!-- commented out until functionality arrives
+
+    <div ng-repeat = "friend in friendsCtrl | filter: friendSearch">
+    <a href="{{friends.profileURL}}">
+      <img class="media-object" src="{{friends.img}}" alt="{{friends.name}}">
+    </a>
+
+-->
+
+
+

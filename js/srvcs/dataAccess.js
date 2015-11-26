@@ -111,6 +111,7 @@ app.factory("dataAccess", ['$firebaseObject', '$firebaseArray', '$route', '$loca
 
     }
 
+
   }; //end return
 
 }]);
