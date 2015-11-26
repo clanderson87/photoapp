@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-6 col-md-3" ng-repeat="pic in viewCtrl.pics | filter: viewCtrl.query">
+  <div class="col-xs-6 col-md-3" ng-repeat="pic in viewCtrl.pics | filter: viewCtrl.query | filter: {uid: '!' + viewCtrl.currentUser.uid}">
     <a href="{{pic.imgUrl}}" class="thumbnail">
       <img src="{{pic.imgUrl}}" alt="{{pic.imgTitle}}">
     </a>

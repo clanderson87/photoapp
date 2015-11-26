@@ -2,6 +2,8 @@ app.controller("MainViewCtrl",
   ["$routeParams", "$location", "dataAccess",
   function($routeParams, $location, $dataAccess) {
 
+  	this.currentUser = $dataAccess.getUser();
+
     this.pics = $dataAccess.getPhotosAsArray();
 
     this.friends = [{username: "Friend1", uid: 1},

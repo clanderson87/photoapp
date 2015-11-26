@@ -1,1 +1,9 @@
-<h1>Partial to show all users</h1>
+<h2>Photo App Users</h2>
+
+<div class="col-xs-12 col-md-6" ng-repeat="user in usersCtrl.allUsers | filter: {uid: '!' + usersCtrl.currentUser.uid}">
+	<img src="{{user.userPhoto}}" alt="userPhoto">
+	<p>
+	<a href="#/users/{{user.uid}}">{{user.username}}</a>
+	</p>
+	<p>{{user.about}}</p>
+</div>
