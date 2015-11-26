@@ -1,11 +1,10 @@
-<<<<<<< HEAD
 img {
   max-height: 200px;
   max-width: 100%;
 }
-=======
+
 /*css to hide edit buttons on load*/
 .editProfile, .editPhoto {
 	display: none;
 }
->>>>>>> master
+
