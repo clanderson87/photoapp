@@ -4,7 +4,7 @@
   <div ng-repeat="friend in viewCtrl.currentUser.friends">
     <a href="#/users/{{friend.uid}}">{{friend.username}}
     </a>
-    <img src="{{friend.userPhoto}}" alt="{{friend.username}}">
+    <img ng-src="{{friend.userPhoto}}" alt="{{friend.username}}">
   </div>
 </div>
 
