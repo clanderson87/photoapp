@@ -36,8 +36,8 @@ app.factory("dataAccess", ['$firebaseObject', '$firebaseArray', '$route', '$loca
 
       currentUser = userRefObj;
 
-      console.log('userRefObj username', userRefObj.username);
-      console.log(userData.facebook);
+      // console.log('userRefObj username', userRefObj.username);
+      // console.log(userData.facebook);
 
 
       if (userRefObj.username !== undefined) {

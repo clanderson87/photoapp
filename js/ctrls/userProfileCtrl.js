@@ -1,4 +1,4 @@
-app.controller("UserProfileCtrl", ["$routeParams", "$location", "dataAccess", "$firebaseObject",
+angular.module('PhotoApp').controller("UserProfileCtrl", ["$routeParams", "$location", "dataAccess", "$firebaseObject",
 	function($routeParams, $location, dataAccess, $firebaseObject) {
 
 		this.following = false;
