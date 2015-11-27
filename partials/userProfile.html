@@ -1,8 +1,7 @@
-<h1>Partial for other users</h1>
-
 <h2>Hi {{profileCtrl.currentUser.username}}</h2>
 
 <p>This is {{profileCtrl.displayUser.username}}'s Profile'</p>
+<p ng-hide="profileCtrl.following">Like this user's content? <button ng-click="profileCtrl.follow()">Follow</button> them</p>
 
 <img src="{{profileCtrl.displayUser.userPhoto}}" alt="userPhoto">
 
@@ -27,6 +26,5 @@
 
 
 </div>
-
 
 

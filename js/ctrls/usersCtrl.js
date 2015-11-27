@@ -1,7 +1,9 @@
 app.controller("UsersCtrl",
-  ["$routeParams", "$location",
-  function($routeParams, $location) {
+  ["$routeParams", "$location", "dataAccess",
+  function($routeParams, $location, dataAccess) {
 
+  this.allUsers = dataAccess.getUsersAsArray();
+  this.currentUser = dataAccess.getUser();
 
 
 }]);

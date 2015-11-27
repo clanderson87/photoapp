@@ -1,12 +1,14 @@
-<div class="row">
-  <div class="col-xs-6 col-md-3" ng-repeat="pic in viewCtrl.pics | filter: viewCtrl.query">
-    <a href="{{pic.imgUrl}}" class="thumbnail">
-      <img src="{{pic.imgUrl}}" alt="{{pic.imgTitle}}">
-    </a>
-    <p>{{pic.imgTitle}} by <a href="#/users/{{pic.uid}}">{{pic.username}}</a></p>
-    <p>{{pic.album}}</p>
-    <p>Tags: <span ng-repeat="tag in pic.tags">{{tag}} </span></p>
+<div class="col-xm 12 col-sm-9"	>
 
-  </div>
+		<div ng-include = "'partials/filters.html'"></div>
+	  <div class="col-xs-6 col-md-3" ng-repeat="pic in viewCtrl.pics | filter: viewCtrl.query | filter: {uid: '!' + viewCtrl.currentUser.uid}">
+	    <a href="{{pic.imgUrl}}" class="thumbnail">
+	      <img ng-src="{{pic.imgUrl}}" alt="{{pic.imgTitle}}">
+	    </a>
+	    <p>{{pic.imgTitle}} by <a href="#/users/{{pic.uid}}">{{pic.username}}</a></p>
+	    <p>{{pic.album}}</p>
+	    <p>Tags: <span ng-repeat="tag in pic.tags">{{tag}} </span></p>
+
+	  </div>
 </div>
 
