@@ -57,6 +57,8 @@ app.controller("AuthCtrl", ["$firebaseAuth", "$location", "dataAccess", "$fireba
 
 			  userRef = ref.child('users').child(userData.uid);
 			  userRefObj = $firebaseObject(userRef);
+			  userRefObj.uid = userData.uid;
+			  userRefObj.about = "New User";
 			  userRefObj.username = this.newUser.username;
 			  userRefObj.userPhoto = "./styles/pics/genericUserIcon.png";
 			  userRefObj.$save();
