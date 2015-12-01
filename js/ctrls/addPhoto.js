@@ -42,7 +42,7 @@ app.controller("AddPhotoCtrl", ["$routeParams", "$location", "dataAccess", "$fir
 
   	this.closeModal = function () {
 
-			 $uibModalInstance.close()
+			 $uibModalInstance.close();
 
   	};
 

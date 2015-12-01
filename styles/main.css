@@ -13,3 +13,8 @@ img {
 	display: none;
 }
 
+.iconImg {
+	max-height: 3em;
+	max-width: 3em;
+}
+

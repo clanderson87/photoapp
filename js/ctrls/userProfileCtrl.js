@@ -9,7 +9,7 @@ angular.module('PhotoApp').controller("UserProfileCtrl", ["$routeParams", "$loca
         this.displayUser = $firebaseObject(userRef);
         console.log(this.displayUser);
 
-    if (this.currentUser == null) {
+    if (this.currentUser === null) {
         this.following = true;
     }
 
@@ -35,7 +35,7 @@ angular.module('PhotoApp').controller("UserProfileCtrl", ["$routeParams", "$loca
 
     		this.currentUser.friends = [];
 
-    	};
+    	}
 
     	this.currentUser.friends.push(this.displayUser);
     	dataAccess.updateProfile(this.currentUser);

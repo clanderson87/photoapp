@@ -79,7 +79,7 @@ app.controller("MyProfileCtrl", ["$routeParams", "$location", "dataAccess", "$fi
 
   	this.closeModal = function () {
 
-			 $uibModalInstance.close()
+			 $uibModalInstance.close();
 
   	};
 
